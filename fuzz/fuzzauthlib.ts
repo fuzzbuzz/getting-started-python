@@ -1,17 +1,17 @@
 import { Fuzzer, FuzzTarget } from "fuzzbuzz";
-import { ByteArray, String } from "fuzzbuzz/generator";
+import { UTF8String } from "fuzzbuzz/generator";
 import * as python from "fuzzbuzz/lang/python";
 
 const fuzzauthlib = python.importModule("fuzzauthlib");
 
 export function FuzzOAuth2Session(f: Fuzzer) {
-  const clientID = new String("clientID");
+  const clientID = new UTF8String("clientID");
   clientID.setMaxLength(1024);
 
-  const clientSecret = new String("clientSecret");
+  const clientSecret = new UTF8String("clientSecret");
   clientSecret.setMaxLength(1024);
 
-  const scope = new String("scope");
+  const scope = new UTF8String("scope");
   scope.setMaxLength(1024);
 
   const target = new FuzzTarget(
