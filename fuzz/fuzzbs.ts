@@ -1,5 +1,5 @@
 import { Fuzzer, FuzzTarget } from "fuzzbuzz";
-import { ByteArray, String } from "fuzzbuzz/generator";
+import { UTF8String } from "fuzzbuzz/generator";
 import * as python from "fuzzbuzz/lang/python";
 
 // atheris fuzzing is currently broken with bs
@@ -7,7 +7,7 @@ python.useSettrace(true)
 const fuzzbs = python.importModule("fuzzbs");
 
 export function FuzzBS(f: Fuzzer) {
-  const body = new String("body");
+  const body = new UTF8String("body");
   body.setMaxLength(4096);
 
   const target = new FuzzTarget((body: string): void => {
